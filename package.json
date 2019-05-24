@@ -1,0 +1,37 @@
+{
+  "name": "newscrape",
+  "version": "1.0.0",
+  "description": "A web app that scrapes popular news articles and allows users to save them",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "watch": "nodemon server/server.js",
+    "start:prod": "node server/server.js",
+    "start:dev": "concurrently \"nodemon server/server.js --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yukezter/newscrape.git"
+  },
+  "author": "Bryan Hinchliffe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yukezter/newscrape/issues"
+  },
+  "homepage": "https://github.com/Yukezter/newscrape#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.5.6"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
